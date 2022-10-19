@@ -96,14 +96,14 @@ k1 = int(input("Введите натуральную степень для пе
 k2 = int(input("Введите натуральную степень для второго файла k2 = "))
 ratio1 = ratio_pl(k1)
 ratio2 = ratio_pl(k2)
-write_file("task_4_1.txt", pl_str(ratio1))
-write_file("task_4_2.txt", pl_str(ratio2))
+write_file("task_5_1.txt", pl_str(ratio1))
+write_file("task_5_2.txt", pl_str(ratio2))
 
 # нахождение суммы многочлена
 
-with open('task_4_1.txt', 'r') as data:
+with open('task_5_1.txt', 'r') as data:
     st1 = data.readlines()
-with open('task_4_2.txt', 'r') as data:
+with open('task_5_2.txt', 'r') as data:
     st2 = data.readlines()
 
 print(f"Первый многочлен: {st1}")
@@ -123,8 +123,8 @@ else:
     mm = len(lst2)
     for i in range(ll,mm):
         lst_new.append(lst2[i])
-write_file("task_4_res.txt", pl_str(lst_new))
-with open('task_4_res.txt', 'r') as data:
+write_file("task_5_res.txt", pl_str(lst_new))
+with open('task_5_res.txt', 'r') as data:
     st3 = data.readlines()
 
 print(f"Результирующий многочлен: {st3}")
