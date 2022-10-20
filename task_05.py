@@ -13,22 +13,30 @@
 import random
 
 # запись в файл
-def write_file(name,st):
+
+
+def write_file(name, st):
     with open(name, 'w') as data:
         data.write(st)
 
 # создание случайного числа от 0 до 100
+
+
 def rnd():
-    return random.randint(0,101)
+    return random.randint(0, 101)
 
 # создание коэффициентов многочлена
+
+
 def ratio_pl(k):
     lst = [rnd() for i in range(k+1)]
     return lst
-    
-# создание многочлена в виде строки 
+
+# создание многочлена в виде строки
+
+
 def pl_str(sp):
-    lst= sp[::-1]
+    lst = sp[::-1]
     wr = ''
     if len(lst) < 1:
         wr = 'x = 0'
@@ -49,6 +57,8 @@ def pl_str(sp):
     return wr
 
 # получение степени многочлена
+
+
 def degree_pl(k):
     if 'x^' in k:
         i = k.find('^')
@@ -60,6 +70,8 @@ def degree_pl(k):
     return num
 
 # получение коэффицента члена многочлена
+
+
 def ratio_member_pl(k):
     if 'x' in k:
         i = k.find('x')
@@ -67,6 +79,8 @@ def ratio_member_pl(k):
     return num
 
 # разбор многочлена и получение его коэффициентов
+
+
 def calc_pl(st):
     st = st[0].replace(' ', '').split('=')
     st = st[0].split('+')
@@ -77,8 +91,8 @@ def calc_pl(st):
         lst.append(int(st[-1]))
         l -= 1
         k = 1
-    i = 1 # степень
-    ii = l-1 # индекс
+    i = 1  # степень
+    ii = l-1  # индекс
     while ii >= 0:
         if degree_pl(st[ii]) != -1 and degree_pl(st[ii]) == i:
             lst.append(ratio_member_pl(st[ii]))
@@ -87,10 +101,11 @@ def calc_pl(st):
         else:
             lst.append(0)
             i += 1
-        
+
     return lst
 
 # создание двух файлов
+
 
 k1 = int(input("Введите натуральную степень для первого файла k1 = "))
 k2 = int(input("Введите натуральную степень для второго файла k2 = "))
@@ -102,26 +117,26 @@ write_file("task_5_2.txt", pl_str(ratio2))
 # нахождение суммы многочлена
 
 with open('task_5_1.txt', 'r') as data:
-    st1 = data.readlines()
+    polinom1 = data.readlines()
 with open('task_5_2.txt', 'r') as data:
-    st2 = data.readlines()
+    polinom2 = data.readlines()
 
-print(f"Первый многочлен: {st1}")
-print(f"Второй многочлен: {st2}")
+print(f"Первый многочлен: {polinom1}")
+print(f"Второй многочлен: {polinom2}")
 
-lst1 = calc_pl(st1)
-lst2 = calc_pl(st2)
+lst1 = calc_pl(polinom1)
+lst2 = calc_pl(polinom2)
 ll = len(lst1)
 if len(lst1) > len(lst2):
     ll = len(lst2)
 lst_new = [lst1[i] + lst2[i] for i in range(ll)]
 if len(lst1) > len(lst2):
     mm = len(lst1)
-    for i in range(ll,mm):
+    for i in range(ll, mm):
         lst_new.append(lst1[i])
 else:
     mm = len(lst2)
-    for i in range(ll,mm):
+    for i in range(ll, mm):
         lst_new.append(lst2[i])
 write_file("task_5_res.txt", pl_str(lst_new))
 with open('task_5_res.txt', 'r') as data:
